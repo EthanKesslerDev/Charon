@@ -50,7 +50,7 @@ public class WeightedObject : MonoBehaviour
 
     public void fall()
     {
-        Debug.Log("Falling");
+        // Debug.Log("Falling");
         rb.isKinematic = false;
         rb.detectCollisions = true;
         fallen = true;
@@ -80,11 +80,11 @@ public class WeightedObject : MonoBehaviour
     {
         if(placedOnBoat)
         {
-            transform.position = toPosition;
+            toPosition.y += 1f;
             transform.parent = theBoat.transform; //For now we're just not going to deal with this bs
-
-            rb.isKinematic = false;
+            transform.position = toPosition;
             rb.detectCollisions = true;
+            rb.isKinematic = false;
         } else {
             rb.isKinematic = false;
             rb.detectCollisions = true;
@@ -96,10 +96,10 @@ public class WeightedObject : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision);
+        // Debug.Log(collision);
         if(collision.gameObject.CompareTag("boat"))
         {
-            Debug.Log("Entered boat");
+            // Debug.Log("Entered boat");
             transform.parent = theBoat.transform;
             onBoat = true;
 
@@ -116,7 +116,7 @@ public class WeightedObject : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("boat"))
         {
-            Debug.Log("Left boat");
+            // Debug.Log("Left boat");
             if(theBoat.weights.Contains(gameObject))
             {
                 theBoat.weights.Remove(gameObject);

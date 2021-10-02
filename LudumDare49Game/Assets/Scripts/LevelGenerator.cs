@@ -21,7 +21,6 @@ public class LevelGenerator : MonoBehaviour
 
     Boat theBoat;
 
-    int thisSection = 0;
     float lastSectionZ = 0;
     float nextSectionZ;
     Vector3 nextSectionPos;

@@ -49,6 +49,7 @@ public class PlayerInteraction : MonoBehaviour
                 } else {
                     weightedObject.drop(myCamera.forward * 10f, null, false, 200f);
                 }
+                objectInHands = null;
             }
         }
     }

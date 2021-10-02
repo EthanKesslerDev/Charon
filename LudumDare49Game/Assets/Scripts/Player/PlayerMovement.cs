@@ -41,5 +41,16 @@ public class PlayerMovement : MonoBehaviour
         //Handling gravity
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+
+        if(transform.position.y <= -20f)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        VoidController voidController = GameObject.FindObjectOfType<VoidController>();
+        voidController.GameEnd();
     }
 }

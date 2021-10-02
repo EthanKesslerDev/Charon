@@ -5,6 +5,7 @@ using UnityEngine;
 public class Boat : MonoBehaviour
 {
     [SerializeField] public List<GameObject> weights = new List<GameObject>();
+    public ParticleSystem smoke;
     
     [Header("Moments")]
     public float totalClockwiseMoment = 0f;
@@ -13,15 +14,25 @@ public class Boat : MonoBehaviour
 
     [Header("Movement")]
     public float standardSpeed = 5f;
-    public float accelPerSecond = 0.01f;
+    public float maxSpeed = 25f;
+    public float accelPerSecond = 0.05f;
     public float steeringSensRed = 75f;
     public float rotationSpeed = 0.1f;
+
+    bool destroyed = false;
+
+    void Start()
+    {
+        smoke.Play();
+    }
 
     void FixedUpdate()
     {
         Moments();
         Move();
         UpdateRotation();
+        standardSpeed += accelPerSecond * Time.time; // Acceleration
+        standardSpeed = Mathf.Clamp(standardSpeed, 0, maxSpeed);
     }
 
     void Move()
@@ -66,8 +77,17 @@ public class Boat : MonoBehaviour
         direction = resultant;
     }
 
-    void UpdateFuel()
+    void OnTriggerEnter(Collider other)
     {
-        //Consume a random barrel in the list to use as fuel!
+        if(other.gameObject.CompareTag("rock") && !destroyed)
+        {
+            destroyed = true;
+            Debug.Log("HIT A ROCK");
+
+            //End the game :)
+            
+            VoidController voidController = GameObject.FindObjectOfType<VoidController>();
+            voidController.GameEnd();
+        }
     }
 }
