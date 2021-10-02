@@ -28,6 +28,7 @@ public class Boat : MonoBehaviour
     {
         Vector3 moveDir = transform.forward;
         moveDir.x += direction / steeringSensRed;
+        moveDir.y = 0 - transform.position.y;
         Debug.DrawRay(transform.position, moveDir * 100, Color.green, 15f);
         transform.Translate(moveDir.normalized * standardSpeed * Time.deltaTime);
     }
@@ -65,5 +66,8 @@ public class Boat : MonoBehaviour
         direction = resultant;
     }
 
-    
+    void UpdateFuel()
+    {
+        //Consume a random barrel in the list to use as fuel!
+    }
 }
