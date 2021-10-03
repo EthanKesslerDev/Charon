@@ -12,6 +12,7 @@ public class PlayerInteraction : MonoBehaviour
     public LayerMask boatLayer;
 
     GameObject objectInHands;
+    // public int Screenshot_Res_Multiplier = 1;
 
     void Update()
     {
@@ -59,5 +60,27 @@ public class PlayerInteraction : MonoBehaviour
                 objectInHands = null;
             }
         }
+
+        // if(Input.GetKeyDown(KeyCode.F1))
+        // {
+        //     TakeScreenshot();
+        // }
     }
+
+
+    // public void TakeScreenshot()
+    //  {
+    //     string folderPath = System.IO.Directory.GetCurrentDirectory() + "/Screenshots/";
+    //     print(folderPath);
+
+    //     if (!System.IO.Directory.Exists(folderPath))
+    //         System.IO.Directory.CreateDirectory(folderPath);
+
+    //     var screenshotName = 
+    //                             "Screenshot_" + 
+    //                             System.DateTime.Now.ToString("dd-MM-yyyy-HH-mm-ss") + 
+    //                             ".png";
+    //     ScreenCapture.CaptureScreenshot(System.IO.Path.Combine(folderPath, screenshotName), Screenshot_Res_Multiplier);
+    //     Debug.Log(folderPath + screenshotName);
+    //  }
 }

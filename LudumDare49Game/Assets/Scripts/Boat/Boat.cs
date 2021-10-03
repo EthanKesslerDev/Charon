@@ -50,7 +50,7 @@ public class Boat : MonoBehaviour
         Moments();
         Move();
         UpdateRotation();
-        standardSpeed += acceleration * Time.time; // Acceleration
+        standardSpeed += acceleration * Time.timeSinceLevelLoad; // Acceleration
         standardSpeed = Mathf.Clamp(standardSpeed, 0, maxSpeed); //Came back to this a day later and Im so proud of my past self because this has helped so much
         if(standardSpeed <= 1f){
             destroyed = true;
@@ -105,7 +105,7 @@ public class Boat : MonoBehaviour
 
     void Fuel()
     {
-        if(Time.time > nextConsumptionTime)
+        if(Time.timeSinceLevelLoad > nextConsumptionTime)
         {
             //Now we do what we want to with the fuel
             // Debug.Log("Knock knock, its the tax man and he's come for your barrels.");

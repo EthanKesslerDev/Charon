@@ -1975,7 +1975,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3baebcbfb3bfc1b4ea5200eb7ff52e14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sens: 250
   body: {fileID: 145285259}
 --- !u!114 &963194230
 MonoBehaviour:
@@ -3744,11 +3743,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zAxisSectionInterval: 250
-  firstSection: {x: 0, y: 0, z: 500}
+  firstSection: {x: 0, y: 0, z: 350}
   Rock: {fileID: 2542455820786173593, guid: 2ccafc43451a67f4390d672921b61e60, type: 3}
   RockRows: 5
-  maxRocksPerRow: 3
-  maxRockOffset: {x: 450, y: 0, z: 300}
+  maxRocksPerRow: 5
+  maxRockOffset: {x: 500, y: 0, z: 300}
   RockParent: {fileID: 521757081973782389}
   Barrel: {fileID: 3411489446383063631, guid: 563f8a4edc6a65745b7ae4534ce9634b, type: 3}
   BarrelRows: 8

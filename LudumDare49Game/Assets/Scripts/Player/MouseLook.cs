@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class MouseLook : MonoBehaviour
 {
-    public float sens = 50f;
+    float sens;
     public Transform body;
     float xRot = 0f;
 
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        sens = settings.lookSens;
     }
 
     void Update()

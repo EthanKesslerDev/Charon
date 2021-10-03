@@ -22,6 +22,7 @@ public class PUIManager : MonoBehaviour
             for (float i = 1; i >= 0; i -= Time.deltaTime)
             {
                 shroud.color = new Color(0, 0, 0, i);
+                
                 yield return null;
             }
             
@@ -40,6 +41,7 @@ public class PUIManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(FadeShroud(true));
+        shroud.gameObject.SetActive(false);
         Debug.Log("Fading");
     }
 

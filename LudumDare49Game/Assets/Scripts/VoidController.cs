@@ -13,9 +13,7 @@ public class VoidController : MonoBehaviour
             PlayDeath();
             Time.timeScale = 0;
             PUIManager pUIManager = GameObject.FindObjectOfType<PUIManager>();
-            StartCoroutine(pUIManager.FadeShroud(false));
             pUIManager.gameEndScreen();
-            StartCoroutine(pUIManager.FadeShroud(true));
             gameOver = true;
         }
 
