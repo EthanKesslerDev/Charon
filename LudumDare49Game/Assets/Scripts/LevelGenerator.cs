@@ -98,6 +98,7 @@ public class LevelGenerator : MonoBehaviour
     void Start(){
         // newRocks(firstSection);
         // newRocks(firstSection += sectionOffset);
+        nextSectionPos = firstSection;
         newSection(firstSection);
         theBoat = GameObject.FindObjectOfType<Boat>();
         nextSectionZ = zAxisSectionInterval;

@@ -16,7 +16,7 @@ public class PlayerInteraction : MonoBehaviour
     void Update()
     {
         if(Input.GetMouseButtonDown(0)) //Left click
-        {
+        {   
             RaycastHit hit;
             if(Physics.Raycast(myCamera.position, myCamera.forward, out hit, maxInteractionDistance, interactLayer))
             {
@@ -24,11 +24,14 @@ public class PlayerInteraction : MonoBehaviour
                 GameObject hitObj = hit.transform.gameObject;
                 if(hitObj.GetComponent<WeightedObject>() != null)
                 {
-                    //Deal with the weighted object
-                    WeightedObject weightedObject = hitObj.GetComponent<WeightedObject>();
-                    if(!weightedObject.inHands)
+                    if(!objectInHands)
                     {
-                        objectInHands = weightedObject.pickup(holdObjectHere.position, holdObjectHere.transform);
+                        //Deal with the weighted object
+                        WeightedObject weightedObject = hitObj.GetComponent<WeightedObject>();
+                        if(!weightedObject.inHands)
+                        {
+                            objectInHands = weightedObject.pickup(holdObjectHere.position, holdObjectHere.transform);
+                        }
                     }
                 }
             }
