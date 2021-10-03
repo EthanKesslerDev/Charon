@@ -25,7 +25,10 @@ public class WeightedObject : MonoBehaviour
 
     void Update()
     {
-
+        if(transform.position.y <= -20f)
+        {
+            Destroy(gameObject, 1f);
+        }
         if(Vector3.Distance(theBoat.transform.position, transform.position) <= 32f) //Dont question why 30, its just some maths I did
         {
             if(!fallen)
@@ -102,6 +105,7 @@ public class WeightedObject : MonoBehaviour
             // Debug.Log("Entered boat");
             transform.parent = theBoat.transform;
             onBoat = true;
+            PlayThud();
 
             //Check if the weight is known to the boat inventory
             if(!theBoat.weights.Contains(gameObject))
@@ -123,5 +127,13 @@ public class WeightedObject : MonoBehaviour
             }
             onBoat = false;
         }
+    }
+
+    void PlayThud()
+    {
+        //0.2 pitch variation
+        AudioSource audioSource = gameObject.GetComponent<AudioSource>();
+        audioSource.pitch += Random.Range(-0.2f, 0.2f);
+        audioSource.Play();
     }
 }

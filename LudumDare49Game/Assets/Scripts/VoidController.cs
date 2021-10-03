@@ -9,6 +9,7 @@ public class VoidController : MonoBehaviour
     {
         if(!gameOver)
         {
+            PlayDeath();
             Time.timeScale = 0;
             PUIManager pUIManager = GameObject.FindObjectOfType<PUIManager>();
             StartCoroutine(pUIManager.FadeShroud(false));
@@ -16,5 +17,12 @@ public class VoidController : MonoBehaviour
             StartCoroutine(pUIManager.FadeShroud(true));
             gameOver = true;
         }
+
+    }
+    void PlayDeath()
+    {
+        //0.2 pitch variation
+        AudioSource audioSource = gameObject.GetComponent<AudioSource>();
+        audioSource.Play();
     }
 }

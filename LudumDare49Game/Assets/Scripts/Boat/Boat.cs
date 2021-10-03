@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Boat : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class Boat : MonoBehaviour
     //Variables for fuel
     [Header("Fuel")]
     public Light furnaceLight;
+    public GameObject furnace;
     float maxLight;
     float currentIntensity;
     float lightLerp = 0f;
@@ -32,6 +34,7 @@ public class Boat : MonoBehaviour
     float nextConsumptionTime;
     public GameObject barrelEffect;
     bool outOfFuel = false;
+    public Slider fuelMeter;
 
 
     void Start()
@@ -123,6 +126,7 @@ public class Boat : MonoBehaviour
 
                     nextConsumptionTime += consumptionInterval;
                     currentIntensity = maxLight;
+                    fuelMeter.value = 1;
                     Debug.Log("RESET FURNACE, Destroyed a barrel ");
                     lightLerp = 0;
                     acceleration = accelPerSecond;
@@ -130,6 +134,7 @@ public class Boat : MonoBehaviour
             } else {
                 outOfFuel = true;
                 acceleration = -0.0002f; //Slowing down the boat
+                furnace.GetComponent<AudioSource>().Play();
             }
 
             //Some kind of SFX?
@@ -139,6 +144,11 @@ public class Boat : MonoBehaviour
         currentIntensity = Mathf.Lerp(maxLight, 0, lightLerp);
         currentIntensity = Mathf.Clamp(currentIntensity, 0 , maxLight);
         furnaceLight.intensity = currentIntensity;
+
+        //Same as above but for the slider
+        float currentFuel = Mathf.Lerp(1, 0, lightLerp);
+        currentFuel = Mathf.Clamp(currentFuel, 0, 1);
+        fuelMeter.value = currentFuel;
     }
 
     void OnTriggerEnter(Collider other)
