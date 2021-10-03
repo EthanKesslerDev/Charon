@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class VoidController : MonoBehaviour
 {
@@ -24,5 +25,17 @@ public class VoidController : MonoBehaviour
         //0.2 pitch variation
         AudioSource audioSource = gameObject.GetComponent<AudioSource>();
         audioSource.Play();
+    }
+
+    public void Restart()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("TheVoid");
+    }
+
+    public void Menu()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("MainMenu");
     }
 }

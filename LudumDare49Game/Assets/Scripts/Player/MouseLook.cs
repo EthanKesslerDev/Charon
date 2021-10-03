@@ -13,10 +13,11 @@ public class MouseLook : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    void FixedUpdate()
+    void Update()
     {
         float mX = Input.GetAxis("Mouse X") * sens * Time.deltaTime;
         float mY = Input.GetAxis("Mouse Y") * sens * Time.deltaTime;
+
 
         xRot -= mY;
         xRot = Mathf.Clamp(xRot, -90f, 90f);

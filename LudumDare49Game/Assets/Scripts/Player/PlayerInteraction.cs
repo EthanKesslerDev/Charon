@@ -37,6 +37,10 @@ public class PlayerInteraction : MonoBehaviour
             }
             Debug.DrawRay(myCamera.position, myCamera.forward, Color.black, 10f);
         }
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            GetComponent<PlayerMovement>().Die();
+        }
 
         if(Input.GetMouseButtonDown(1))
         {

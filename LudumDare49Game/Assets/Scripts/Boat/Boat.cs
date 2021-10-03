@@ -108,7 +108,7 @@ public class Boat : MonoBehaviour
         if(Time.time > nextConsumptionTime)
         {
             //Now we do what we want to with the fuel
-            Debug.Log("Knock knock, its the tax man and he's come for your barrels.");
+            // Debug.Log("Knock knock, its the tax man and he's come for your barrels.");
             //Select a random barrel
             if(weights.Count > 0)
             {
@@ -132,9 +132,15 @@ public class Boat : MonoBehaviour
                     acceleration = accelPerSecond;
                 }
             } else {
+                if(!outOfFuel)
+                {
+                    if(!furnace.GetComponent<AudioSource>().isPlaying)
+                    {
+                        furnace.GetComponent<AudioSource>().Play();
+                    }
+                }
                 outOfFuel = true;
                 acceleration = -0.0002f; //Slowing down the boat
-                furnace.GetComponent<AudioSource>().Play();
             }
 
             //Some kind of SFX?

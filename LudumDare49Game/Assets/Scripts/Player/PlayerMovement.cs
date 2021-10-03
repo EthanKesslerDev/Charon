@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void Die()
+    public void Die()
     {
         VoidController voidController = GameObject.FindObjectOfType<VoidController>();
         voidController.GameEnd();
